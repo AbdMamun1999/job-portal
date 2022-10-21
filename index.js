@@ -1,9 +1,11 @@
 const dotenv = require("dotenv").config();
 const colors = require("colors");
 const errorHandler = require("./middlewares/errorHandler");
+const dbConnection = require("./utils/dbConnection");
 
 
-const app = require("./app");
+
+const app = require("./apps");
 
 // db connection
 dbConnection();
