@@ -41,20 +41,20 @@ const managerSchema = mongoose.Schema({
       required: true,
       ref: "Job",
     },
-    imageURL: {
-      type: String,
-      validate: [validator.isURL, "Please provide a valid url"],
-    },
-    location: {
-      type: String,
-      lowercase: true,
-      message: "{VALUE} is not  acorrect division!",
-    },
-    status: {
-      type: String,
-      default: "active",
-      enum: ["active", "inactive"],
-    },
+  },
+  imageURL: {
+    type: String,
+    validate: [validator.isURL, "Please provide a valid url"],
+  },
+  location: {
+    type: String,
+    lowercase: true,
+    message: "{VALUE} is not  acorrect division!",
+  },
+  status: {
+    type: String,
+    default: "active",
+    enum: ["active", "inactive"],
   },
 });
 
