@@ -9,11 +9,13 @@ app.use(cors());
 
 //routes
 const userRouter = require("./routes/user.route");
+const jobInfoRouter = require("./routes/job.route");
 
 app.get("/", (req, res) => {
   res.send("Route is working! YaY!");
 });
 
 app.use("/user", userRouter);
+app.use("/jobs", jobInfoRouter);
 
 module.exports = app;

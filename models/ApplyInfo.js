@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const { ObjectId } = mongoose.Schema.Types;
 
 const applyInfoSchema = mongoose.Schema({
-  designation: {
+  title: {
     type: String,
     required: [true, "Please provide a name"],
     trim: true,

@@ -18,17 +18,18 @@ const managerSchema = mongoose.Schema({
     unique: true,
   },
   companyName: {
-    name: {
-      type: String,
-      trim: true,
-      lowercase: true,
-      minLength: [3, "Name must be at least 3 characters."],
-      maxLength: [100, "Name is too large"],
-    },
-  },
-  role: {
     type: String,
-    required: ["true", "Please required role"],
+    trim: true,
+    lowercase: true,
+    minLength: [3, "Name must be at least 3 characters."],
+    maxLength: [100, "Name is too large"],
+  },
+  detailsInfo: {
+    id: {
+      type: ObjectId,
+      required: true,
+      ref: "User",
+    },
   },
   jobs: {
     name: {
@@ -41,20 +42,6 @@ const managerSchema = mongoose.Schema({
       required: true,
       ref: "Job",
     },
-  },
-  imageURL: {
-    type: String,
-    validate: [validator.isURL, "Please provide a valid url"],
-  },
-  location: {
-    type: String,
-    lowercase: true,
-    message: "{VALUE} is not  acorrect division!",
-  },
-  status: {
-    type: String,
-    default: "active",
-    enum: ["active", "inactive"],
   },
 });
 
