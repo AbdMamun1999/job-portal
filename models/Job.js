@@ -14,7 +14,7 @@ const jobSchema = mongoose.Schema(
         required: true,
       },
     },
-    title: {
+    jobTypes: {
       type: String,
       required: [true, "Please provide a Job title"],
       trim: true,
@@ -47,7 +47,7 @@ const jobSchema = mongoose.Schema(
       type: String,
       required: [true, "Please salary is required"],
     },
-    logation: {
+    location: {
       type: String,
       required: [true, "Please job location is required"],
     },

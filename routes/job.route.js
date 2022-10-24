@@ -9,4 +9,6 @@ router
   .post(verifiedToken, jobInfoController.createJob)
   .get(jobInfoController.getAllJobs);
 
+router.route("/:id").get(jobInfoController.getJobByid);
+
 module.exports = router;
