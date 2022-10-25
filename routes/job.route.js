@@ -11,6 +11,6 @@ router
   .get(jobInfoController.getAllJobs);
 
 router.route("/:id").get(jobInfoController.getJobByid);
-router.route("/:id/apply").post(applyController.postApply);
+router.route("/:id/apply").post(verifiedToken,applyController.postApply);
 
 module.exports = router;
