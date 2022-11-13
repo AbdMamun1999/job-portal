@@ -10,11 +10,11 @@ const managerSchema = mongoose.Schema({
     },
   },
   jobs: {
-    name: {
-      type: String,
-      trim: true,
-      // required: true,
-    },
+    // name: {
+    //   type: String,
+    //   trim: true,
+    //   // required: true,
+    // },
     id: {
       type: ObjectId,
       // required: true,

@@ -1,4 +1,8 @@
-const { createHiringManagerService } = require("../services/hiringManager.service");
+const {
+  getAllJobsByHiringManagerService,
+  createHiringManagerService,
+  updateAhiringManagerService,
+} = require("../services/hiringManager.service");
 
 exports.createHiringManager = async (req, res) => {
   try {
@@ -13,5 +17,28 @@ exports.createHiringManager = async (req, res) => {
       status: "fail",
       error: error.message,
     });
+  }
+};
+
+exports.getAllJobsByHiringManager = async (req, res) => {
+  console.log(req.user.email);
+  const jobs = await getAllJobsByHiringManagerService(req.user.email);
+  console.log(jobs);
+  /* try {
+    const jobs = await getAllJobsByHiringManagerService(req.params.id)
+  } catch (error) {
+    
+  } */
+};
+
+// updateAhiringManager
+exports.updateAhiringManager = async (req, res) => {
+  console.log(req.body)
+  try {
+    const { id } = req.params;
+    const result = await updateAhiringManagerService(id, req.body);
+    res.send(result);
+  } catch (error) {
+    res.send(error.message);
   }
 };

@@ -44,8 +44,9 @@ const jobSchema = mongoose.Schema(
       require: [true, "Please skill is required"],
     },
     salary: {
-      type: String,
+      type: Number,
       required: [true, "Please salary is required"],
+      min: [0, "Product price can't be negative"],
     },
     location: {
       type: String,
