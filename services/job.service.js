@@ -5,8 +5,8 @@ exports.createJobService = async (data) => {
   return result;
 };
 
-exports.getAllJobsService = async (filter) => {
-  const jobs = await Job.find(filter);
+exports.getAllJobsService = async (query, filter) => {
+  const jobs = await Job.find(query).sort(filter.sortBy);
   return jobs;
 };
 

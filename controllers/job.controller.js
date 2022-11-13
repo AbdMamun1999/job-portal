@@ -22,6 +22,7 @@ exports.createJob = async (req, res) => {
 
 exports.getAllJobs = async (req, res) => {
   try {
+    const { sort, salary, ...filterOption } = req.query;
     let filters = { ...req.query };
 
     let quries = {};
@@ -30,11 +31,11 @@ exports.getAllJobs = async (req, res) => {
       let salary = filters.salary.split("-");
       salary = salary.map((num) => Number(num));
       salary = { salary: { $gte: salary[0], $lte: salary[1] } };
-      quries = { ...salary };
+      quries = { ...salary, ...filterOption };
     }
-    console.log(quries);
+    filters.sort = sort;
 
-    const jobs = await getAllJobsService(quries);
+    const jobs = await getAllJobsService(quries,filters);
 
     res.send(jobs);
   } catch (error) {
