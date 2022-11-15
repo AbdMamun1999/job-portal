@@ -14,7 +14,7 @@ const jobSchema = mongoose.Schema(
         required: true,
       },
     },
-    jobTypes: {
+    jobTitle: {
       type: String,
       required: [true, "Please provide a Job title"],
       trim: true,
@@ -25,12 +25,14 @@ const jobSchema = mongoose.Schema(
     companyName: {
       type: String,
       trim: true,
+      required: [true, "Company name must be required"],
       lowercase: true,
       minLength: [3, "Name must be at least 3 characters."],
       maxLength: [100, "Name is too large"],
     },
     aboutCompany: {
       type: String,
+      required: true,
     },
     risponsibility: {
       type: [String],
@@ -38,19 +40,74 @@ const jobSchema = mongoose.Schema(
     },
     qualification: {
       type: [String],
+      required: true,
     },
     skill: {
       type: [String],
       require: [true, "Please skill is required"],
     },
     salary: {
-      type: Number,
-      required: [true, "Please salary is required"],
-      min: [0, "Product price can't be negative"],
+      currency: {
+        type: String,
+        required: true,
+      },
+      range: {
+        minimum: {
+          type: Number,
+          min: 0,
+          validate: {
+            validator: function (value) {
+              const currentValue = this.target.salary.range.maximum;
+              return currentValue !== undefined ? value <= currentValue : true;
+            },
+            message:
+              "The minimum range with Value {VALUE} must be equal or smaller then Maximun",
+          },
+        },
+        maximum: {
+          type: Number,
+          min: 0,
+          validate: {
+            validator: function (value) {
+              const currentValue = this.target.salary.range.minimum;
+              return currentValue !== undefined ? value <= currentValue : true;
+            },
+            message:
+              "The minimum range with Value {VALUE} must be equal or bigger then Minimun",
+          },
+        },
+      },
     },
     location: {
       type: String,
       required: [true, "Please job location is required"],
+    },
+    jobTypes: {
+      type: String,
+      required: true,
+      trim: true,
+      enum: ["full time", "part time", "internship", "contract", "temporary"],
+      message: "{VALUE} is not a valid job type",
+    },
+    hiringPeople: {
+      type: Number,
+      required: true,
+    },
+    hireWithinDays: {
+      type: String,
+      required: true,
+      enum: [
+        "1 to 3",
+        "3 to 7",
+        "1 to 2 weeks",
+        "2 to 4 weeks",
+        "more than 4 weeks",
+      ],
+      message: "{VALUE} is not hiring days",
+    },
+    schedule: {
+      type: String,
+      required: true,
     },
     dateLines: {
       type: Date,
