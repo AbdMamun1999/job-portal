@@ -47,13 +47,11 @@ const userSchema = mongoose.Schema(
       },
     },
     companyName: {
-      name: {
-        type: String,
-        trim: true,
-        lowercase: true,
-        minLength: [3, "Name must be at least 3 characters."],
-        maxLength: [100, "Name is too large"],
-      },
+      type: String,
+      trim: true,
+      lowercase: true,
+      minLength: [3, "Name must be at least 3 characters."],
+      maxLength: [100, "Name is too large"],
     },
     role: {
       type: String,
@@ -61,9 +59,14 @@ const userSchema = mongoose.Schema(
       enum: ["user", "hiring manager", "admin"],
       default: "user",
     },
-    imageURL: {
-      type: String,
-      validate: [validator.isURL, "Please provide a valid url"],
+    Image: {
+      imageURL: {
+        type: String,
+        validate: [validator.isURL, "Please provide a valid url"],
+      },
+      public_id: {
+        type: String,
+      },
     },
     location: {
       type: String,
@@ -74,6 +77,10 @@ const userSchema = mongoose.Schema(
       type: String,
       default: "active",
       enum: ["active", "inactive"],
+    },
+    resume: {
+      id: String,
+      type: String,
     },
 
     consfirmationToken: String,

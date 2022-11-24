@@ -33,7 +33,7 @@ exports.getAllJobs = async (req, res) => {
       salary = { salary: { $gte: salary[0], $lte: salary[1] } };
       quries = { ...salary, ...filterOption };
     }
-    filters.sort = sort;
+    filters.sortBy = sort;
 
     const jobs = await getAllJobsService(quries,filters);
 

@@ -1,3 +1,5 @@
+const cloudinary = require("../middlewares/cloudinary");
+
 const {
   signupService,
   findUserByEmailService,
@@ -102,6 +104,25 @@ exports.getAllUser = async (req, res) => {
       status: "success",
       users,
     });
+  } catch (error) {
+    res.status(400).json({
+      status: "failed",
+      error: error.message,
+    });
+  }
+};
+
+exports.updateUserImagebyId = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const cloudinaryResult = await cloudinary.uploader.upload(req.file.path);
+    console.log(cloudinaryResult);
+    const image = {
+      imageURL: cloudinaryResult.secure_url,
+      public_id: cloudinaryResult.public_id,
+    };
+
+    const result = await updateUserByIdService(id, image);
   } catch (error) {
     res.status(400).json({
       status: "failed",

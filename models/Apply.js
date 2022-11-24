@@ -2,29 +2,30 @@ const mongoose = require("mongoose");
 const { ObjectId } = mongoose.Schema.Types;
 
 const applySchema = mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+  },
   resume: {
+    id: String,
     type: String,
   },
   applicant: {
-    name: {
-      type: String,
-      required: true,
-    },
-    email: {
-      type: String,
-      required: true,
-    },
     id: {
       type: ObjectId,
       ref: "User",
       required: true,
     },
   },
+  jobTitle: {
+    type: String,
+    require: true,
+  },
   jobInfo: {
-    jobTypes: {
-      type: String,
-      require: true,
-    },
     id: {
       type: ObjectId,
       ref: "JobInfo",

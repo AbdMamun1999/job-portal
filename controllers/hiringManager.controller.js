@@ -33,7 +33,7 @@ exports.getAllJobsByHiringManager = async (req, res) => {
 
 // updateAhiringManager
 exports.updateAhiringManager = async (req, res) => {
-  console.log(req.body)
+  // console.log(req.body)
   try {
     const { id } = req.params;
     const result = await updateAhiringManagerService(id, req.body);

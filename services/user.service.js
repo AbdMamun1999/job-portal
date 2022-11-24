@@ -14,3 +14,11 @@ exports.getAllUsersService = async () => {
   const users = await User.find();
   return users;
 };
+
+exports.updateUserByIdService = async (id, data) => {
+  const result = User.updateOne(
+    { _id: id },
+    { $set: data },
+    { runValidators: true }
+  );
+};

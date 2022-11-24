@@ -9,3 +9,7 @@ exports.getApplyByIdService = async (id) => {
   const result = await Apply.findOne({ "jobInfo.id": id }).populate("applicant.id")
   return result;
 };
+
+/* exports.getAllJobsByHiringManagerService = async (id) =>{
+    const result = await HiringManager.findById(id).populate()
+} */
