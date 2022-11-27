@@ -15,10 +15,13 @@ exports.getAllUsersService = async () => {
   return users;
 };
 
-exports.updateUserByIdService = async (id, data) => {
-  const result = User.updateOne(
+/* exports.updateUserByIdService = async (id, data) => {
+  const result = await User.updateOne(
     { _id: id },
     { $set: data },
     { runValidators: true }
   );
-};
+
+ 
+  return result;
+}; */

@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Abdullah Al Mamun",
+    "email": "mamun12121999@gmail.com",
+    "password": "Mamun01",
+    "confirmPassword": "Mamun01",
+    "companyName": "",
+    "image": {
+      "imageURL": "",
+      "public_id": ""
+    },
+    "location": "Dhaka,Bangladesh",
+    "status": "active",
+    "resume": ""
+  }
+]

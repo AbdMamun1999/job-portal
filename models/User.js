@@ -50,8 +50,6 @@ const userSchema = mongoose.Schema(
       type: String,
       trim: true,
       lowercase: true,
-      minLength: [3, "Name must be at least 3 characters."],
-      maxLength: [100, "Name is too large"],
     },
     role: {
       type: String,
@@ -59,7 +57,7 @@ const userSchema = mongoose.Schema(
       enum: ["user", "hiring manager", "admin"],
       default: "user",
     },
-    Image: {
+    image: {
       imageURL: {
         type: String,
         validate: [validator.isURL, "Please provide a valid url"],

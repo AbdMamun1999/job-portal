@@ -6,7 +6,7 @@ const verifiedToken = require("../middlewares/verifiedToken");
 
 const router = express.Router();
 
-router.post("/signup", userController.signup);
+router.post("/signup", imageUploader.single("avatar"), userController.signup);
 router.post("/login", userController.login);
 router.get("/me", verifiedToken, userController.getMe),
   router.get("/alluser", userController.getAllUser);
@@ -16,10 +16,10 @@ router.get("/me", verifiedToken, userController.getMe),
   userController.updateUserbyId
 ); */
 
-router.post(
+/* router.post(
   "/updated-profile-image/:id",
   imageUploader.single("avatar"),
   userController.updateUserImagebyId
-);
+); */
 
 module.exports = router;
